@@ -23,12 +23,12 @@ int main() {
 	int n, m; cin >> n >> m;
 	vector<vector<int> > g(n);
 	while (m--) {
-		int a, b; cin >> a >> b; a--, b--;
+		int a, b; cin >> a >> b;
 		g[a].push_back(b);
 		g[b].push_back(a);
 	}
 	vector<int> label;
-	for (int i = 0; i < n; i++) label.push_back(i+1);
+	for (int i = 0; i < n; i++) label.push_back(i);
 
 	auto ans = solve(n, g, label);
 	for (auto i : ans) cout << i << " ";

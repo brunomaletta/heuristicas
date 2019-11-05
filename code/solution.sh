@@ -1,5 +1,5 @@
 make brute
-for i in {1..2}
+for ((i = 1; i <= $1; i++))
 do
 	./brute < ../inst/in/g$i.txt > ../inst/sol/g$i.txt
 done

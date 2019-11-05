@@ -1,7 +1,13 @@
-all: brute
+all: brute greedy match
 
 brute:
 	g++ -std=c++11 -o brute brute.cpp
 
+greedy:
+	g++ -std=c++11 -o greedy greedy.cpp
+
+match:
+	g++ -std=c++11 -o match match.cpp
+
 clean:
-	rm -rf brute
+	rm -rf brute greedy match
