@@ -12,5 +12,8 @@ match:
 floyd:
 	g++ -std=c++11 -o floyd floyd.cpp
 
+ramsey:
+	g++ -std=c++11 -o ramsey ramsey.cpp
+
 clean:
-	rm -rf brute greedy match floyd
+	rm -rf brute greedy match floyd ramsey
