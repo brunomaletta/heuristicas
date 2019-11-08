@@ -38,6 +38,6 @@ int main() {
 	for (int i = 0; i < n; i++) label.push_back(i);
 
 	auto ans = solve(n, g, label);
-	for (auto i : ans) cout << i << " ";
-	cout << endl;
+	//for (auto i : ans) cout << i << " ";
+	cout << ans.size() << endl;
 }

@@ -1,12 +1,9 @@
 make floyd
-echo ""
-for ((i = 1; i <= $1; i++))
+for file in ../inst/stole/*
 do
-	echo "Grafo $i"
-	echo "deu:"
-	./floyd < ../inst/in/g$i.txt
-	echo "sol:"
-	cat ../inst/sol/g$i.txt
-	echo ""
+	start=`date +%s%N`
+	./floyd < $file
+	end=`date +%s%N`
+	echo `expr $end - $start`
 done
 make clean

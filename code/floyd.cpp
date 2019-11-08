@@ -84,8 +84,10 @@ int main(){
 	vector<pair<int, pair<int, int> > > v = to_pair(a);
 	sort(v.rbegin(), v.rend());
 	set<int> s = select(g, v);
-	for(int i : s)
-		cout << i << " "; cout << endl;
+
+	cout << s.size() << endl;
+	//for(int i : s)
+	//	cout << i << " "; cout << endl;
 
 	return 0;
 }

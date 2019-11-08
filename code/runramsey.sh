@@ -1,12 +1,9 @@
 make ramsey
-echo ""
-for ((i = 1; i <= $1; i++))
+for file in ../inst/stole/*
 do
-	echo "Grafo $i"
-	echo "deu:"
-	./ramsey < ../inst/in/g$i.txt
-	echo "sol:"
-	cat ../inst/sol/g$i.txt
-	echo ""
+	start=`date +%s%N`
+	./ramsey < $file
+	end=`date +%s%N`
+	echo `expr $end - $start`
 done
 make clean

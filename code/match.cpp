@@ -173,6 +173,6 @@ int main() {
 	}
 
 	auto ans = solve(g);
-	for (auto i : ans) cout << i << " ";
-	cout << endl;
+	//for (auto i : ans) cout << i << " ";
+	cout << ans.size() << endl;
 }

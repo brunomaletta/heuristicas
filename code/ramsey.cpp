@@ -89,8 +89,9 @@ struct graph{
 	void indSet(){
 		set<int> ind = ramsey();
 
-		for(int i : ind)
-			cout << i << " "; cout << endl;
+		//for(int i : ind)
+		//	cout << i << " "; cout << endl;
+		cout << ind.size() << endl;
 	}
 
 };
