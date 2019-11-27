@@ -4,8 +4,6 @@ using namespace std;
 #define NUM 20
 
 int main(){
-	string s;
-	getline(cin, s);
 	vector<double> v(NUM);
 	for(int i = 0; i < NUM; i++){
 		int a; double b; cin >> a >> b;

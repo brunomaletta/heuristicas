@@ -1,11 +1,12 @@
 constr = construtivas
 meta = meta
+aux = aux
 
 all:
 	aux/runall.sh
 
 brute:
-	g++ -std=c++11 aux/brute.cpp
+	g++ -std=c++11 $(aux)/brute.cpp
 	make run
 
 greedy:
@@ -29,10 +30,10 @@ bruno:
 	make run
 
 reads:
-	g++ -std=c++11 -o reads aux/reads.cpp
+	g++ -std=c++11 -o reads $(aux)/reads.cpp
 
 run:
-	aux/run.sh
+	$(aux)/run.sh
 
 clean:
-	rm -rf a.out
+	rm -rf a.out reads
