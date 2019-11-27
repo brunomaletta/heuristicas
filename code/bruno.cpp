@@ -70,8 +70,11 @@ struct graph{
 		if(g.size() == 0)
 			return set<int> ();
 
-		//remove the first element and its neighborhood
 		int v = g.begin() -> first;
+		for(auto &i : g)
+			if(i.second.size() < g[v].size())
+				v = i.first;
+
 		auto neighborhood = hideNeighbors(v);
 		auto i1 = greedy();
 		i1.insert(v);
@@ -83,7 +86,6 @@ struct graph{
 	}
 
 	set<int> removeOne(set<int> s0){
-		//cout << "Remove\n";
 		auto best = s0;
 
 		for(int i : s0){
@@ -99,7 +101,6 @@ struct graph{
 	}
 
 	set<int> insertOne(set<int> s0){
-		//cout << "Insert\n";
 		auto best = s0;
 
 		for(int i = 0; i < n; i++){
@@ -109,10 +110,20 @@ struct graph{
 			for(int j = 0; j < n; j++)
 				if(m[i][j]) curr.erase(j);
 
-			showAll();
+
+			g.clear();
 			curr.insert(i);
-			for(int j : curr)
-				hideNeighbors(j);
+			for(int j = 0; j < n; j++){
+				if(curr.count(j)) continue;
+				bool add = true;
+				for(int k : curr)
+					if(m[j][k]){
+						add = false;
+						break;
+					}
+				if(add)
+					show(j);
+			}
 
 			set<int> aux = greedy();
 			for(int j : aux)
@@ -130,9 +141,12 @@ struct graph{
 
 		while(!stop){
 			stop = true;
-			if(best != insertOne(best)){
-				best = insertOne(best);
+
+			auto insert = insertOne(best);
+			if(best != insert){
+				best = insert;
 				stop = false;
+				continue;
 			}
 
 			if(best != removeOne(best)){
@@ -141,10 +155,6 @@ struct graph{
 			}
 		}
 
-		while(best != insertOne(best)){
-			cout << "melhorou\n";
-			best = insertOne(best);
-		}
 		return best;
 	}
 
@@ -173,9 +183,7 @@ struct graph{
 			if(curr.size() > best.size())
 				best = curr;
 		}
-		
-		for(int i : best)
-			cout << i << " "; cout << endl;
+		cout << best.size() << endl;
 	}
 
 };
@@ -184,8 +192,7 @@ struct graph{
 int main(){
 	int n, m;
 	cin >> n >> m;
-	graph g;
-	g.build(n);
+	graph g; g.build(n);
 	for(int i = 0; i < m; i++){
 		int a, b; cin >> a >> b;
 		g.add(a, b);

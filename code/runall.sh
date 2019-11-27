@@ -11,3 +11,6 @@ echo "Ramsey"
 
 echo "Floyd"
 ./runfloyd.sh | ./reads
+
+echo "Bruno"
+./runbruno.sh | ./reads

@@ -12,6 +12,9 @@ match:
 floyd:
 	g++ -std=c++11 -o floyd floyd.cpp
 
+bruno:
+	g++ -std=c++11 -o bruno bruno.cpp
+
 ramsey:
 	g++ -std=c++11 -o ramsey ramsey.cpp
 
