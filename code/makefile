@@ -1,4 +1,5 @@
 constr = construtivas
+meta = meta
 
 all:
 	aux/runall.sh
@@ -24,7 +25,7 @@ ramsey:
 	make run
 
 bruno:
-	g++ -std=c++11 bruno.cpp
+	g++ -std=c++11 $(meta)/bruno.cpp
 	make run
 
 reads:
