@@ -1,25 +1,37 @@
-all: brute greedy match
+constr = construtivas
+
+all:
+	aux/runall.sh
 
 brute:
-	g++ -std=c++11 -o brute brute.cpp
+	g++ -std=c++11 aux/brute.cpp
+	make run
 
 greedy:
-	g++ -std=c++11 -o greedy greedy.cpp
+	g++ -std=c++11 $(constr)/greedy.cpp
+	make run
 
 match:
-	g++ -std=c++11 -o match match.cpp
+	g++ -std=c++11 $(constr)/match.cpp
+	make run
 
 floyd:
-	g++ -std=c++11 -o floyd floyd.cpp
-
-bruno:
-	g++ -std=c++11 -o bruno bruno.cpp
+	g++ -std=c++11 $(constr)/floyd.cpp
+	make run
 
 ramsey:
-	g++ -std=c++11 -o ramsey ramsey.cpp
+	g++ -std=c++11 $(constr)/ramsey.cpp
+	make run
+
+bruno:
+	g++ -std=c++11 bruno.cpp
+	make run
 
 reads:
-	g++ -std=c++11 -o reads reads.cpp
+	g++ -std=c++11 -o reads aux/reads.cpp
+
+run:
+	aux/run.sh
 
 clean:
-	rm -rf brute greedy match floyd ramsey reads
+	rm -rf a.out
