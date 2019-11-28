@@ -71,10 +71,6 @@ struct graph{
 			return set<int> ();
 
 		int v = g.begin() -> first;
-		for(auto &i : g)
-			if(i.second.size() < g[v].size())
-				v = i.first;
-
 		auto neighborhood = hideNeighbors(v);
 		auto i1 = greedy();
 		i1.insert(v);
@@ -99,12 +95,13 @@ struct graph{
 			for(int j : aux)
 				curr.insert(j);
 
-			if(curr.size() > best.size())
+			if(curr.size() == s0.size() + 2)
 				best = curr;
 		}
 
 		return best;
 	}
+
 
 	set<int> insertOne(set<int> s0){
 		auto best = s0;
@@ -164,19 +161,31 @@ struct graph{
 		return best;
 	}
 
-	set<int> perturb(set<int> s0){
-		int q = rand() % s0.size() + 1;
-		vector<int> v(s0.begin(), s0.end());
+	set<int> perturb(set<int> s0, int k){
+		vector<int> v;
+		for(int i = 0; i < n; i++)
+			if(s0.count(i) == 0)
+				v.push_back(i);
+
 		random_shuffle(v.begin(), v.end());
-		for(int i = 0; i < q; i++)
-			s0.erase(v[i]);
+		set<int> novos;
+		for(int i = 0; i < min(k, (int) v.size()); i++)
+			novos.insert(v[i]);
 
 		showAll();
+		for(int i : novos){
+			for(int j : g[i])
+				if(s0.count(j))
+					s0.erase(j);
+			s0.insert(i);
+		}
+
 		for(int i : s0)
 			hideNeighbors(i);
-		auto s1 = greedy();
-		for(int i : s1)
+		auto aux = greedy();
+		for(int i : aux)
 			s0.insert(i);
+
 		return s0;
 	}
 
@@ -185,7 +194,7 @@ struct graph{
 		auto best = s;
 
 		for(int i = 0; i < maxIter; i++){
-			s = perturb(s);
+			s = perturb(s, 3);
 			auto curr = vnd(s);
 			if(curr.size() > best.size())
 				best = curr;
