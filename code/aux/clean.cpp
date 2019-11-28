@@ -9,7 +9,8 @@ int main(){
 	cin >> S;
 	cout << S << endl;
 
-	for(int i = 0; i < S; i++){
+	int ss = S;
+	for(int SS = 0; SS < ss; SS++){
 		cin >> s >> S;
 		cout << S-1 << " ";
 		cin >> S;

@@ -25,16 +25,20 @@ ramsey:
 	g++ -std=c++11 -O3 $(constr)/ramsey.cpp
 	make run
 
+outroBruno:
+	g++ -std=c++11 -O3 $(meta)/outroBruno.cpp
+	make run
+
 bruno:
 	g++ -std=c++11 -O3 $(meta)/bruno.cpp
 	make run
 
-bonito:
-	g++ -std=c++11 -O3 $(meta)/bonito.cpp
+feo:
+	g++ -std=c++11 -O3 $(meta)/feo.cpp
 	make run
 
-ils:
-	g++ -std=c++11 -O3 $(meta)/ils.cpp
+bonito:
+	g++ -std=c++11 -O3 $(meta)/bonito.cpp
 	make run
 
 reads:

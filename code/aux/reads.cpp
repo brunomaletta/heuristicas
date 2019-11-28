@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define NUM 20
+#define NUM 25
 
 int main(){
 	vector<double> v(NUM);
